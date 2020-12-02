@@ -6,6 +6,6 @@ namespace LocaCar.Business.Intefaces
 {
     public interface IClienteService : IDisposable
     {
-        Task<bool> EfetuarLocacao(int veiculoId);
+        Task EfetuarLocacao(Locacao locacao);
     }
 }
