@@ -4,8 +4,8 @@ namespace LocaCar.Business.Models
 {
     public class Locacao : Entity
     {
-        public int ClienteId { get; set; }
-        public int VeiculoId { get; set; }
+        public Guid ClienteId { get; set; }
+        public Guid VeiculoId { get; set; }
         public DateTime DataInicio { get; set; }
         public DateTime DataFim { get; set; }
 

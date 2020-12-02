@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace LocaCar.Business.Models
 {
@@ -9,6 +10,8 @@ namespace LocaCar.Business.Models
         public string Placa { get; set; }
         public int AnoModelo { get; set; }
         public int AnoFabricacao { get; set; }
+
+        public virtual List<Locacao> Locacoes { get; set; }
 
     }
 }

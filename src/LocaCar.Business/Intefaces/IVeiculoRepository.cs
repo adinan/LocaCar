@@ -2,7 +2,7 @@
 
 namespace LocaCar.Business.Intefaces
 {
-    public interface IUsuarioRepository : IRepository<Usuario>
+    public interface IVeiculoRepository : IRepository<Veiculo>
     {
     }
 }

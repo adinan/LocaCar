@@ -11,16 +11,16 @@ namespace LocaCar.Data.Context
     {
         public MeuDbContext(DbContextOptions options) : base(options) { }
 
-        public DbSet<Veiculo> Produtos { get; set; }
-        public DbSet<Endereco> Enderecos { get; set; }
-        public DbSet<Fornecedor> Fornecedores { get; set; }
+        public DbSet<Veiculo> Veiculos { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Locacao> Locacoes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            foreach (var property in modelBuilder.Model.GetEntityTypes()
-                .SelectMany(e => e.GetProperties()
-                    .Where(p => p.ClrType == typeof(string))))
-                property.Relational().ColumnType = "varchar(100)";
+            ////Qndo não definir o tamanho das propriedades string Fluent API ou na data Notation a mesma será criada como varchar(100)
+            foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany( e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
+                property.SetColumnType("varchar(100)");
+
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(MeuDbContext).Assembly);
 

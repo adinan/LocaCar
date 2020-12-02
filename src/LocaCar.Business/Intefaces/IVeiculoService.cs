@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace LocaCar.Business.Intefaces
 {
-    public interface IUsuarioService : IDisposable
+    public interface IVeiculoService : IDisposable
     {
         Task<bool> Adicionar(Usuario usuario);
         Task<bool> Atualizar(Usuario usuario);
