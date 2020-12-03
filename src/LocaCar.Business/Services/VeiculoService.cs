@@ -16,22 +16,22 @@ namespace LocaCar.Business.Services
             _veiculoRepository = produtoRepository;
         }
 
-        public Task<bool> Adicionar(Usuario usuario)
+        public Task Adicionar(Veiculo usuario)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> Atualizar(Usuario usuario)
+        public Task Atualizar(Veiculo usuario)
         {
             throw new NotImplementedException();
         }
 
         public void Dispose()
         {
-            _veiculoRepository?.Dispose();
+            throw new NotImplementedException();
         }
 
-        public Task<bool> Remover(Guid id)
+        public Task Remover(Guid id)
         {
             throw new NotImplementedException();
         }

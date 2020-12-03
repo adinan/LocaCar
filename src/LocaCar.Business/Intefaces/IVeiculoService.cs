@@ -6,8 +6,8 @@ namespace LocaCar.Business.Intefaces
 {
     public interface IVeiculoService : IDisposable
     {
-        Task<bool> Adicionar(Usuario usuario);
-        Task<bool> Atualizar(Usuario usuario);
-        Task<bool> Remover(Guid id);
+        Task Adicionar(Veiculo usuario);
+        Task Atualizar(Veiculo usuario);
+        Task Remover(Guid id);
     }
 }

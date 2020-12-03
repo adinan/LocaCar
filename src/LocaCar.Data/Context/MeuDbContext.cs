@@ -9,7 +9,7 @@ namespace LocaCar.Data.Context
 {
     public class MeuDbContext : DbContext
     {
-        public MeuDbContext(DbContextOptions options) : base(options) { }
+        public MeuDbContext(DbContextOptions<MeuDbContext> options) : base(options) { }
 
         public DbSet<Veiculo> Veiculos { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
