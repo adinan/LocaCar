@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using LocaCar.Business.Intefaces;
 using LocaCar.Business.Models;
@@ -11,5 +12,9 @@ namespace LocaCar.Data.Repository
     {
         public ClienteRepository(MeuDbContext context) : base(context) { }
 
+        public Task<Cliente> ObterPorCpf(string cpf)
+        {
+            return DbSet.AsNoTracking().FirstOrDefaultAsync(p => p.Cpf == cpf);
+        }
     }
 }

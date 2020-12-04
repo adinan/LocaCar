@@ -6,6 +6,11 @@ namespace LocaCar.Business.Models
     {
         public string Cpf { get; set; }
 
+        //public Cliente(string cpf)
+        //{
+        //    Cpf = cpf;
+        //}
+
 
         /* EF Relation */
         public virtual List<Locacao> Locacoes { get; set; }

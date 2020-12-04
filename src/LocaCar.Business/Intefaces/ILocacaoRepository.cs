@@ -6,6 +6,6 @@ namespace LocaCar.Business.Intefaces
 {
     public interface ILocacaoRepository : IRepository<Locacao>
     {
-        Task<Locacao> ObterPorData(DateTime dataInicio, DateTime dataFim);
+    
     }
 }

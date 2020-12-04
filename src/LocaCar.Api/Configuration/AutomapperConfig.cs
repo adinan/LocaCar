@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using LocaCar.Api.ViewModels;
 using LocaCar.Business.Models;
+using System;
 
 namespace LocaCar.Api.Configuration
 {
@@ -9,8 +10,12 @@ namespace LocaCar.Api.Configuration
         public AutomapperConfig()
         {
             CreateMap<Veiculo, VeiculoViewModel>().ReverseMap();
-            CreateMap<Cliente, ClienteViewModel>().ReverseMap();
-             
+
+            CreateMap<Locacao, LocacaoViewModel>().ReverseMap();
+
+            //CreateMap<LocacaoViewModel, Locacao>()
+            //    .ConstructUsing(m => new Locacao(Guid.Empty, m.VeiculoId, m.DataInicio, m.DataFim));
+
         }
     }
 }

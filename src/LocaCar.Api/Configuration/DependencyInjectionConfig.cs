@@ -16,10 +16,12 @@ namespace LocaCar.Api.Configuration
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IVeiculoRepository, VeiculoRepository>();
+            services.AddScoped<ILocacaoRepository, LocacaoRepository>();
 
             services.AddScoped<INotificador, Notificador>();
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<IVeiculoService, VeiculoService>();
+            services.AddScoped<ILocacaoService, LocacaoService>();
 
              
 
