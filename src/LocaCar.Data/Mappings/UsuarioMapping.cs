@@ -13,14 +13,6 @@ namespace LocaCar.Data.Mappings
             builder.Property(c => c.Nome)
                 .IsRequired()
                 .HasColumnType("varchar(200)");
-
-            builder.Property(c => c.Senha)
-                .IsRequired()
-                .HasColumnType("varchar(256)");
-
-            builder.Property(c => c.Login)
-                .IsRequired()
-                .HasColumnType("varchar(20)");
              
             builder.ToTable("Usuarios");
         }

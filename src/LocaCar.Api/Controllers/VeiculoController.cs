@@ -53,8 +53,7 @@ namespace LocaCar.Api.Controllers
 
             var veiculo = _mapper.Map<Veiculo>(veiculoViewModel);
             await _veiculoService.Adicionar(veiculo);
-
-            //todo
+             
 
             return Ok();
         }

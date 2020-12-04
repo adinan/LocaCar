@@ -18,13 +18,11 @@ namespace LocaCar.Api.Configuration
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-            //services.AddIdentity
-
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddRoles<IdentityRole>()
                 .AddErrorDescriber<IdentityMensagensPortugues>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
-            //.AddErrorDescriber<IdentityMensagensPortugues>()
+                .AddEntityFrameworkStores<ApplicationDbContext>(); 
+
 
 
             // JWT

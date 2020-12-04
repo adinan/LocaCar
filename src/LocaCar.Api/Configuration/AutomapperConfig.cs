@@ -10,9 +10,7 @@ namespace LocaCar.Api.Configuration
         {
             CreateMap<Veiculo, VeiculoViewModel>().ReverseMap();
             CreateMap<Cliente, ClienteViewModel>().ReverseMap();
-
-            //CreateMap<Produto, ProdutoViewModel>()
-            //    .ForMember(dest => dest.NomeFornecedor, opt => opt.MapFrom(src => src.Fornecedor.Nome));
+             
         }
     }
 }

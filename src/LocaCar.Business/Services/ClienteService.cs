@@ -22,11 +22,7 @@ namespace LocaCar.Business.Services
 
         public async Task EfetuarLocacao(Locacao locacao)
         {
-            //var veiculo = await _veiculoRepository.ObterPorId(veiculoId);
-            //var cliente = await _clienteRepository.ObterPorId(veiculoId);
-            //if (veiculo == null || cliente == null)
-            //    return ;
-            
+             
             //● Regra: O mesmo veículo não pode ser alocado caso já esteja reservado no período.
             foreach (var item in locacao.Veiculo.Locacoes)
             {

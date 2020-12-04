@@ -27,7 +27,7 @@ namespace LocaCar.Api.Controllers
 
             var user = new IdentityUser
             {
-                UserName = model.Email,
+                UserName = model.Nome,
                 Email = model.Email,
                 EmailConfirmed = true
             };
@@ -36,7 +36,6 @@ namespace LocaCar.Api.Controllers
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, false);
-                //return CustomResponse(await GerarJwt(user.Email));
                 return CustomResponse(model);
             }
             foreach (var error in result.Errors)
@@ -56,8 +55,6 @@ namespace LocaCar.Api.Controllers
 
             if (result.Succeeded)
             {
-                //_logger.LogInformation("Usuario " + model.Email + " logado com sucesso");
-                //return CustomResponse(await GerarJwt(model.Email));
                 return CustomResponse(model);
             }
             if (result.IsLockedOut)
