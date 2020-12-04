@@ -1,8 +1,12 @@
 ﻿using LocaCar.Api.Data;
+using LocaCar.Api.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace LocaCar.Api.Configuration
 {
@@ -17,13 +21,14 @@ namespace LocaCar.Api.Configuration
             //services.AddIdentity
 
             services.AddIdentity<IdentityUser, IdentityRole>()
-                   .AddRoles<IdentityRole>()
-                 .AddEntityFrameworkStores<ApplicationDbContext>();
-                 //.AddErrorDescriber<IdentityMensagensPortugues>()
-                 
+                .AddRoles<IdentityRole>()
+                .AddErrorDescriber<IdentityMensagensPortugues>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+            //.AddErrorDescriber<IdentityMensagensPortugues>()
+
 
             // JWT
-            /*
+
             var appSettingsSection = configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
 
@@ -48,7 +53,6 @@ namespace LocaCar.Api.Configuration
                     ValidIssuer = appSettings.Emissor
                 };
             });
-            */
             return services;
         }
     }
