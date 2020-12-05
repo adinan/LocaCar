@@ -5,6 +5,8 @@ using LocaCar.Data.Context;
 using LocaCar.Data.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace LocaCar.Api.Configuration
 {
@@ -23,7 +25,8 @@ namespace LocaCar.Api.Configuration
             services.AddScoped<IVeiculoService, VeiculoService>();
             services.AddScoped<ILocacaoService, LocacaoService>();
 
-             
+            services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+
 
             return services;
         }

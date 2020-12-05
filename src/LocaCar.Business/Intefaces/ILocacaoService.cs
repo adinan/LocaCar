@@ -4,7 +4,8 @@ using System.Threading.Tasks;
 
 namespace LocaCar.Business.Intefaces
 {
-    public interface IClienteService : IDisposable
+    public interface ILocacaoService : IDisposable
     {
+        Task EfetuarLocacao(Locacao locacao, string cpf);
     }
 }

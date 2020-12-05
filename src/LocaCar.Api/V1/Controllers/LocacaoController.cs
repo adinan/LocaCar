@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
+using LocaCar.Api.Controllers;
 using LocaCar.Api.ViewModels;
 using LocaCar.Business.Intefaces;
 using LocaCar.Business.Models;
+using LocaCar.Business.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace LocaCar.Api.Controllers
+namespace LocaCar.Api.V1.Controllers
 {
     [Authorize]
     [ApiVersion("1.0")]
@@ -14,18 +16,15 @@ namespace LocaCar.Api.Controllers
     public class LocacaoController : BaseController
     {
         private readonly ILocacaoService _locacaoService;
-        private readonly IClienteRepository _clienteRepository;
         private readonly IMapper _mapper;
 
         public int MyProperty { get; set; }
         public LocacaoController(INotificador notificador,
                                  ILocacaoService clienteService,
-                                 IMapper mapper,
-                                 IClienteRepository clienteRepository) : base(notificador)
+                                 IMapper mapper) : base(notificador)
         {
             _locacaoService = clienteService;
             _mapper = mapper;
-            _clienteRepository = clienteRepository;
         }
 
         [HttpPost]

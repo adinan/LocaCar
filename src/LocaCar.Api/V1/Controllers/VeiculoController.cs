@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LocaCar.Api.Controllers;
 using LocaCar.Api.ViewModels;
 using LocaCar.Business.Intefaces;
 using LocaCar.Business.Models;
@@ -8,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace LocaCar.Api.Controllers
+namespace LocaCar.Api.V1.Controllers
 {
     [Authorize]
     [ApiVersion("1.0")]
@@ -21,10 +22,10 @@ namespace LocaCar.Api.Controllers
 
         public VeiculoController(INotificador notificador,
                                  IVeiculoRepository veiculoRepository,
-                                 IMapper mapper, 
+                                 IMapper mapper,
                                  IVeiculoService veiculoService) : base(notificador)
         {
-            this._veiculoRepository = veiculoRepository;
+            _veiculoRepository = veiculoRepository;
             _mapper = mapper;
             _veiculoService = veiculoService;
         }
@@ -52,11 +53,11 @@ namespace LocaCar.Api.Controllers
         public async Task<ActionResult<VeiculoViewModel>> Adicionar(VeiculoViewModel veiculoViewModel)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
-            
+
             veiculoViewModel.Id = Guid.NewGuid();
             var veiculo = _mapper.Map<Veiculo>(veiculoViewModel);
             await _veiculoService.Adicionar(veiculo);
-             
+
 
             return CustomResponse(veiculo);
         }

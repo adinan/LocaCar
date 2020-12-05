@@ -1,4 +1,5 @@
-﻿using LocaCar.Api.Extensions;
+﻿using LocaCar.Api.Controllers;
+using LocaCar.Api.Extensions;
 using LocaCar.Api.ViewModels;
 using LocaCar.Business.Intefaces;
 using Microsoft.AspNetCore.Identity;
@@ -10,10 +11,9 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LocaCar.Api.Controllers
+namespace LocaCar.Api.V1.Controllers
 {
-    [ApiVersion("2.0")]
-    [ApiVersion("1.0", Deprecated = true)]
+    [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}")]
     public class UsuarioController : BaseController
     {
