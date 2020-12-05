@@ -26,6 +26,7 @@ namespace LocaCar.Api
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+
             services.AddIdentityConfig(Configuration);
 
             services.AddAutoMapper(typeof(Startup));
@@ -33,6 +34,8 @@ namespace LocaCar.Api
             services.WebApiConfig();
 
             services.AddSwaggerConfig();
+
+            services.AddLoggingConfig();
 
             services.ResolveDependencies();
         }
@@ -44,7 +47,7 @@ namespace LocaCar.Api
 
             app.UseSwaggerConfig(provider);
 
-            //app.UseLoggingConfiguration();
+            app.UseLoggingConfiguration();
         }
     }
 }

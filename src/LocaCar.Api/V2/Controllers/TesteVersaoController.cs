@@ -1,6 +1,9 @@
-﻿using LocaCar.Api.Controllers;
+﻿using Elmah.Io.AspNetCore;
+using LocaCar.Api.Controllers;
 using LocaCar.Business.Intefaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System;
 
 namespace LocaCar.Api.V2.Controllers
 {
@@ -8,15 +11,32 @@ namespace LocaCar.Api.V2.Controllers
     [Route("api/v{version:apiVersion}/teste")]
     public class TesteVersaoController : BaseController
     {
-        public TesteVersaoController(INotificador notificador) : base(notificador)
+        private readonly ILogger _logger;
+
+        public TesteVersaoController(INotificador notificador,
+                                     ILogger<TesteVersaoController> logger) : base(notificador)
         {
+            _logger = logger;
         }
 
         [HttpGet]
         public string Valor()
         {
 
-            return "Sou o teste de versão V2";
+
+            try
+            {
+                var i = 0;
+                var result = 42 / i;
+            }
+            catch (DivideByZeroException e)
+            {
+                e.Ship(HttpContext);
+            }
+
+
+            throw new Exception("Teste Erro ELMAH");
+
         }
     }
 }
