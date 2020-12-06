@@ -3,7 +3,6 @@ using LocaCar.Api.Controllers;
 using LocaCar.Api.ViewModels;
 using LocaCar.Business.Intefaces;
 using LocaCar.Business.Models;
-using LocaCar.Business.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

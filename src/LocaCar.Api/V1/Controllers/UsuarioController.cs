@@ -4,7 +4,6 @@ using LocaCar.Api.Data;
 using LocaCar.Api.Extensions;
 using LocaCar.Api.ViewModels;
 using LocaCar.Business.Intefaces;
-using LocaCar.Business.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;

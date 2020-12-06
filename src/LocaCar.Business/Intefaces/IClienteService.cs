@@ -1,6 +1,4 @@
-﻿using LocaCar.Business.Models;
-using System;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace LocaCar.Business.Intefaces
 {

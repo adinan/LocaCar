@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using LocaCar.Api.Controllers;
-using LocaCar.Api.Data;
 using LocaCar.Api.ViewModels;
 using LocaCar.Business.Intefaces;
 using LocaCar.Business.Models;

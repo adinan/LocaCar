@@ -1,5 +1,4 @@
-﻿using LocaCar.Business.Models.Validations.Documentos;
-using FluentValidation;
+﻿using FluentValidation;
 
 namespace LocaCar.Business.Models.Validations
 {

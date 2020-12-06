@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LocaCar.Business.Models
+﻿namespace LocaCar.Business.Models
 {
     public class Usuario : Entity
     {

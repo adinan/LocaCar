@@ -4,7 +4,6 @@ using LocaCar.Business.Notificacoes;
 using LocaCar.Business.Services;
 using LocaCar.Data.Context;
 using LocaCar.Data.Repository;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;

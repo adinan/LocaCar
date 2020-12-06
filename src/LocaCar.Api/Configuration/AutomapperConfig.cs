@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using LocaCar.Api.ViewModels;
 using LocaCar.Business.Models;
-using System;
 
 namespace LocaCar.Api.Configuration
 {
