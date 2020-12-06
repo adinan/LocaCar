@@ -1,7 +1,10 @@
-﻿using LocaCar.Api.Controllers;
+﻿using AutoMapper;
+using LocaCar.Api.Controllers;
+using LocaCar.Api.Data;
 using LocaCar.Api.Extensions;
 using LocaCar.Api.ViewModels;
 using LocaCar.Business.Intefaces;
+using LocaCar.Business.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -17,19 +20,25 @@ namespace LocaCar.Api.V1.Controllers
     [Route("api/v{version:apiVersion}")]
     public class UsuarioController : BaseController
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly AppSettings _appSettings;
+        private readonly IUsuarioService _usuarioService; 
+        private readonly IMapper _mapper; 
 
 
         public UsuarioController(INotificador notificador,
-                                 SignInManager<IdentityUser> signInManager,
-                                 UserManager<IdentityUser> userManager,
-                                 IOptions<AppSettings> appSettings) : base(notificador)
+                                 SignInManager<ApplicationUser> signInManager,
+                                 UserManager<ApplicationUser> userManager,
+                                 IOptions<AppSettings> appSettings,
+                                 IMapper mapper,
+                                 IUsuarioService usuarioService) : base(notificador)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _appSettings = appSettings.Value;
+            _usuarioService = usuarioService;
+            _mapper = mapper;
         }
 
         [HttpPost("novo-usuario")]
@@ -37,16 +46,17 @@ namespace LocaCar.Api.V1.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            var user = new IdentityUser
+            var user = new ApplicationUser
             {
-                UserName = model.Nome,
-                Email = model.Email,
+                Nome = model.Nome,
+                UserName = model.Login,
                 EmailConfirmed = true
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
+                //await _usuarioService.Adicionar(_mapper.Map<Usuario>(model));
                 await _signInManager.SignInAsync(user, false);
                 return CustomResponse(await GerarJwt(model.Login));
             }

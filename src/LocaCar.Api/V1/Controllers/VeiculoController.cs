@@ -81,7 +81,11 @@ namespace LocaCar.Api.V1.Controllers
 
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            await _veiculoService.Atualizar(_mapper.Map<Veiculo>(veiculoViewModel));
+            var veiculo = _mapper.Map<Veiculo>(veiculoViewModel);
+
+            if (!_fipeApi.ValidaInformacoesVeiculoTabelaFipe(veiculo).Result) return CustomResponse(ModelState);
+
+            await _veiculoService.Atualizar(veiculo);
 
             return CustomResponse(veiculoViewModel);
         }

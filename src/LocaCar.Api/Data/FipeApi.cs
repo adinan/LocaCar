@@ -29,7 +29,7 @@ namespace LocaCar.Api.Data
                 //Valida Marca
                 string apiResponse = await httpClient.GetAsync($"http://fipeapi.appspot.com/api/1/{tipo}/marcas.json")
                     .Result.Content.ReadAsStringAsync();
-                var marcaIdFipe = JsonConvert.DeserializeObject<List<VeiculosFipe>>(apiResponse)
+                var marcaIdFipe = JsonConvert.DeserializeObject<List<VeiculosFipeResponse>>(apiResponse)
                     .FirstOrDefault(p => p.name.ToUpper() == model.Marca.ToUpper())?.id;
 
                 if (marcaIdFipe == null)
@@ -41,7 +41,7 @@ namespace LocaCar.Api.Data
                 //Valida Modelo
                 apiResponse = await httpClient.GetAsync($"http://fipeapi.appspot.com/api/1/{tipo}/veiculos/{marcaIdFipe}.json")
                     .Result.Content.ReadAsStringAsync();
-                var modelos = JsonConvert.DeserializeObject<List<VeiculosFipe>>(apiResponse);
+                var modelos = JsonConvert.DeserializeObject<List<VeiculosFipeResponse>>(apiResponse);
 
                 if (!modelos.Any(p => p.name.ToUpper() == model.Modelo.ToUpper()))
                 {

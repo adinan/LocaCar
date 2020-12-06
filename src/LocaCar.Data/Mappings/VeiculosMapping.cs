@@ -28,6 +28,10 @@ namespace LocaCar.Data.Mappings
                 .IsRequired()
                 .HasColumnType("int");
 
+            builder.Property(p => p.TipoVeiculo)
+                .IsRequired()
+                .HasColumnType("int");
+
 
             builder.ToTable("Veiculos");
         }

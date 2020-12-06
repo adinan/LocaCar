@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocaCar.Data.Migrations
 {
     [DbContext(typeof(MeuDbContext))]
-    [Migration("20201202211707_Initial")]
-    partial class Initial
+    [Migration("20201206192219_Inicial")]
+    partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -78,17 +78,9 @@ namespace LocaCar.Data.Migrations
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Login")
-                        .IsRequired()
-                        .HasColumnType("varchar(20)");
-
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("varchar(200)");
-
-                    b.Property<string>("Senha")
-                        .IsRequired()
-                        .HasColumnType("varchar(256)");
 
                     b.HasKey("Id");
 
@@ -121,6 +113,9 @@ namespace LocaCar.Data.Migrations
                     b.Property<string>("Placa")
                         .IsRequired()
                         .HasColumnType("varchar(10)");
+
+                    b.Property<int>("TipoVeiculo")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

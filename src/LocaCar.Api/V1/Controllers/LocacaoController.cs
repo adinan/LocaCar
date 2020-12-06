@@ -12,7 +12,7 @@ namespace LocaCar.Api.V1.Controllers
 {
     [Authorize]
     [ApiVersion("1.0")]
-    [Route("api/v{version:apiVersion}/locacao")]
+    [Route("api/v{version:apiVersion}/locacoes")]
     public class LocacaoController : BaseController
     {
         private readonly ILocacaoService _locacaoService;

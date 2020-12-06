@@ -1,6 +1,6 @@
 ﻿namespace LocaCar.Api.Data
 {
-    public class VeiculosFipe
+    public class VeiculosFipeResponse
     {
         public string name { get; set; }
         public string fipe_name { get; set; }

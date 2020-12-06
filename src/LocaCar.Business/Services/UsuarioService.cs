@@ -1,7 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using LocaCar.Business.Intefaces;
 using LocaCar.Business.Models;
+using LocaCar.Business.Models.Validations;
 
 namespace LocaCar.Business.Services
 {
@@ -15,24 +15,22 @@ namespace LocaCar.Business.Services
             _usuarioRepository = usuarioRepository;
         }
 
-        public Task<bool> Adicionar(Usuario usuario)
+        public async Task Adicionar(Usuario usuario)
         {
-            throw new NotImplementedException();
+            if (!ExecutarValidacao(new UsuarioValidation(), usuario)) return;
+
+            //if (_usuarioRepository.Buscar(v => v.Nome == usuario.Nome).Result.Any())
+            //{
+            //    Notificar("Já usuário já cadastrado");
+            //    return;
+            //}
+
+            await _usuarioRepository.Adicionar(usuario);
         }
 
-        public Task<bool> Atualizar(Usuario usuario)
-        {
-            throw new NotImplementedException();
-        }
-         
         public void Dispose()
         {
             _usuarioRepository?.Dispose();
-        }
-
-        public Task<bool> Remover(Guid id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

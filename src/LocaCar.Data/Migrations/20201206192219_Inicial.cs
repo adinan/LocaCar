@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LocaCar.Data.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,8 +26,6 @@ namespace LocaCar.Data.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Nome = table.Column<string>(type: "varchar(200)", nullable: false),
-                    Login = table.Column<string>(type: "varchar(20)", nullable: false),
-                    Senha = table.Column<string>(type: "varchar(256)", nullable: false),
                     DataCadastro = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -41,6 +39,7 @@ namespace LocaCar.Data.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Modelo = table.Column<string>(type: "varchar(100)", nullable: false),
+                    TipoVeiculo = table.Column<int>(type: "int", nullable: false),
                     Marca = table.Column<string>(type: "varchar(100)", nullable: false),
                     Placa = table.Column<string>(type: "varchar(10)", nullable: false),
                     AnoModelo = table.Column<int>(type: "int", nullable: false),
