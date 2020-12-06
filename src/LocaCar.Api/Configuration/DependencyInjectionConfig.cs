@@ -1,4 +1,5 @@
-﻿using LocaCar.Business.Intefaces;
+﻿using LocaCar.Api.Data;
+using LocaCar.Business.Intefaces;
 using LocaCar.Business.Notificacoes;
 using LocaCar.Business.Services;
 using LocaCar.Data.Context;
@@ -24,6 +25,9 @@ namespace LocaCar.Api.Configuration
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<IVeiculoService, VeiculoService>();
             services.AddScoped<ILocacaoService, LocacaoService>();
+
+            services.AddScoped<IFipeApi, FipeApi>();
+
 
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 

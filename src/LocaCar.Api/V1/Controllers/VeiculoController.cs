@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LocaCar.Api.Controllers;
+using LocaCar.Api.Data;
 using LocaCar.Api.ViewModels;
 using LocaCar.Business.Intefaces;
 using LocaCar.Business.Models;
@@ -19,15 +20,18 @@ namespace LocaCar.Api.V1.Controllers
         private readonly IVeiculoRepository _veiculoRepository;
         private readonly IVeiculoService _veiculoService;
         private readonly IMapper _mapper;
+        private readonly IFipeApi _fipeApi;
 
         public VeiculoController(INotificador notificador,
                                  IVeiculoRepository veiculoRepository,
                                  IMapper mapper,
-                                 IVeiculoService veiculoService) : base(notificador)
+                                 IVeiculoService veiculoService,
+                                 IFipeApi fipeApi) : base(notificador)
         {
             _veiculoRepository = veiculoRepository;
             _mapper = mapper;
             _veiculoService = veiculoService;
+            _fipeApi = fipeApi;
         }
 
 
@@ -52,10 +56,14 @@ namespace LocaCar.Api.V1.Controllers
         [HttpPost]
         public async Task<ActionResult<VeiculoViewModel>> Adicionar(VeiculoViewModel veiculoViewModel)
         {
+
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
             veiculoViewModel.Id = Guid.NewGuid();
             var veiculo = _mapper.Map<Veiculo>(veiculoViewModel);
+
+            if(!_fipeApi.ValidaInformacoesVeiculoTabelaFipe(veiculo).Result) return CustomResponse(ModelState);
+
             await _veiculoService.Adicionar(veiculo);
 
             veiculoViewModel.Id = veiculo.Id;

@@ -58,9 +58,11 @@ namespace LocaCar.Api.Configuration
             else
             {
                 app.UseHsts();
+
+                app.UseLoggingConfiguration();
+                app.UseMiddleware<ExceptionMiddleware>();
             }
 
-            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
 

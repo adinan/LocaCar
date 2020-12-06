@@ -14,9 +14,12 @@ namespace LocaCar.Api
     public class Startup
     {
         public IConfiguration Configuration { get; }
+        public IHostEnvironment HostEnvironment { get; }
 
         public Startup(IHostEnvironment hostEnvironment)
         {
+            HostEnvironment = hostEnvironment;
+
             var builder = new ConfigurationBuilder()
                 .SetBasePath(hostEnvironment.ContentRootPath)
                 .AddJsonFile("appsettings.json", true, true)
@@ -47,7 +50,7 @@ namespace LocaCar.Api
 
             services.AddSwaggerConfig();
 
-            services.AddLoggingConfig();
+            services.AddLoggingConfig(HostEnvironment);
 
             services.ResolveDependencies();
         }
@@ -58,7 +61,6 @@ namespace LocaCar.Api
 
             app.UseSwaggerConfig(provider);
 
-            app.UseLoggingConfiguration();
         }
     }
 }
