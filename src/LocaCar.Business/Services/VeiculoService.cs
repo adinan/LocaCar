@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LocaCar.Business.Intefaces;
@@ -10,11 +11,14 @@ namespace LocaCar.Business.Services
     public class VeiculoService : BaseService, IVeiculoService
     {
         private readonly IVeiculoRepository _veiculoRepository;
+        private readonly ILocacaoRepository _locacaoRepository;
 
         public VeiculoService(IVeiculoRepository produtoRepository,
-                              INotificador notificador) : base(notificador)
+                              INotificador notificador,
+                              ILocacaoRepository locacaoRepository) : base(notificador)
         {
             _veiculoRepository = produtoRepository;
+            _locacaoRepository = locacaoRepository;
         }
 
         public async Task Adicionar(Veiculo veiculo)
@@ -26,7 +30,7 @@ namespace LocaCar.Business.Services
                 Notificar("Já existe um veículo com a placa informada");
                 return;
             }
-            
+
             await _veiculoRepository.Adicionar(veiculo);
         }
 
@@ -51,23 +55,24 @@ namespace LocaCar.Business.Services
 
         public async Task Remover(Guid id)
         {
-            if (VeiculoEstaLocado(id))
+            var locacaos = _locacaoRepository.ObterLocacoesVeiculo(id).Result.ToList();
+            if (VeiculoEstaLocado(locacaos))
             {
                 Notificar("O veiculo está locado, não é possível excluir.");
                 return;
             }
             //regra para locacoes futuras
 
+            _locacaoRepository.RemoverEmLote(locacaos);
 
             await _veiculoRepository.Remover(id);
         }
 
-        private bool VeiculoEstaLocado(Guid id)
+        private bool VeiculoEstaLocado(List<Locacao> locacoesVeiculo)
         {
-            var locacoesVeiculo = _veiculoRepository.ObterPorId(id).Result.Locacoes;
             if (locacoesVeiculo == null) return false;
-
-            return locacoesVeiculo.Any(locacao => locacao.DataInicio < DateTime.Now && DateTime.Now <= locacao.DataFim);
+         
+            return locacoesVeiculo.Any(l => l.DataInicio <= DateTime.Now && DateTime.Now <= l.DataFim);
         }
 
 

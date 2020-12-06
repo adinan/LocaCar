@@ -10,7 +10,7 @@ namespace LocaCar.Business.Models.Validations
             RuleFor(f => f.Cpf)
                 .NotEmpty().WithMessage("O campo {PropertyName} precisa ser fornecido");
             RuleFor(f => f.Cpf.Length).Equal(CpfValidacao.TamanhoCpf)
-                    .WithMessage("O campo Documento precisa ter {ComparisonValue} caracteres e foi fornecido {PropertyValue}.");
+                    .WithMessage("O campo {PropertyName} precisa ter {ComparisonValue} caracteres e foi fornecido {PropertyValue}.");
             RuleFor(f => CpfValidacao.Validar(f.Cpf)).Equal(true)
                 .WithMessage("O Cpf fornecido é inválido.");
              
