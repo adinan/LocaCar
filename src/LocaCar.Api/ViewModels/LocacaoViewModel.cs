@@ -9,7 +9,6 @@ namespace LocaCar.Api.ViewModels
         public Guid VeiculoId { get; set; }
         
         [Key]
-        public Guid ClientId { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Cpf { get; set; }

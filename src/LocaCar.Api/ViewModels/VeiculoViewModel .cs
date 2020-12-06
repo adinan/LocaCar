@@ -29,7 +29,7 @@ namespace LocaCar.Api.ViewModels
         
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         //[Range(1000, 9999, ErrorMessage = "Tamanho do campo {0} invalido")]
-        [RegularExpression(@"^(\d{4})$", ErrorMessage = "Entre com um ano valido")]
+        [RegularExpression(@"^(\d{4})$", ErrorMessage = "Tamanho do campo {0} invalido")]
         public int AnoFabricacao { get; set; }
 
         //public IEnumerable<LocacaoViewModel> Locacoes { get; set; }

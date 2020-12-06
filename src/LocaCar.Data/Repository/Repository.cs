@@ -28,12 +28,12 @@ namespace LocaCar.Data.Repository
 
         public virtual async Task<TEntity> ObterPorId(Guid id)
         {
-            return await DbSet.FindAsync(id);
+            return await DbSet.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public virtual async Task<List<TEntity>> ObterTodos()
         {
-            return await DbSet.ToListAsync();
+            return await DbSet.AsNoTracking().ToListAsync();
         }
 
         public virtual async Task Adicionar(TEntity entity)

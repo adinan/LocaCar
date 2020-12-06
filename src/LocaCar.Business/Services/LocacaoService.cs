@@ -68,7 +68,7 @@ namespace LocaCar.Business.Services
 
         private bool TemSobreposicaoDatas(DateTime start1, DateTime end1, DateTime start2, DateTime end2)
         {
-            return start1 < end2 && end1 > start2;
+            return start1 <= end2 && end1 >= start2;
         }
 
         public void Dispose()

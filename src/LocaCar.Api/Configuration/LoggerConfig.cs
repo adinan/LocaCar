@@ -15,7 +15,7 @@ namespace LocaCar.Api.Configuration
             services.AddElmahIo(o =>
             {
                 o.ApiKey = "38bb9ae7cbe3462e9105c8b4503581c8";
-                o.LogId = new Guid("d50fbee3-2b7d-4966-8861-f24b438301b4");
+                o.LogId = new Guid("c4c4c185-aedc-4908-832c-c2d79ee335d5");
             });
              
             services.AddLogging(builder =>
@@ -23,7 +23,7 @@ namespace LocaCar.Api.Configuration
                 builder.AddElmahIo(o =>
                 {
                     o.ApiKey = "38bb9ae7cbe3462e9105c8b4503581c8";
-                    o.LogId = new Guid("d50fbee3-2b7d-4966-8861-f24b438301b4");
+                    o.LogId = new Guid("c4c4c185-aedc-4908-832c-c2d79ee335d5");
                 });
                 builder.AddFilter<ElmahIoLoggerProvider>(null, LogLevel.Warning);
             });

@@ -58,8 +58,8 @@ namespace LocaCar.Api.V1.Controllers
             var veiculo = _mapper.Map<Veiculo>(veiculoViewModel);
             await _veiculoService.Adicionar(veiculo);
 
-
-            return CustomResponse(veiculo);
+            veiculoViewModel.Id = veiculo.Id;
+            return CustomResponse(veiculoViewModel);
         }
 
         [HttpPut("{id:guid}")]

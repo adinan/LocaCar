@@ -65,6 +65,8 @@ namespace LocaCar.Business.Services
         private bool VeiculoEstaLocado(Guid id)
         {
             var locacoesVeiculo = _veiculoRepository.ObterPorId(id).Result.Locacoes;
+            if (locacoesVeiculo == null) return false;
+
             return locacoesVeiculo.Any(locacao => locacao.DataInicio < DateTime.Now && DateTime.Now <= locacao.DataFim);
         }
 

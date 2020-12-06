@@ -36,8 +36,6 @@ namespace LocaCar.Api.V1.Controllers
 
             await _locacaoService.EfetuarLocacao(locacao, model.Cpf);
 
-            model.ClientId = locacao.ClienteId;
-
             return CustomResponse(model);
         }
     }
