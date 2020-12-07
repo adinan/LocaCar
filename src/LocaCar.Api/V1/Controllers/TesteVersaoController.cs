@@ -17,13 +17,13 @@ namespace LocaCar.Api.V1.Controllers
         [HttpGet]
         public string Valor()
         {
-            return "Sou o teste de versão V1.1";
+            return "Sou o teste GET Deprecated de versão V1. Utilizar o GET V2";
         }
 
         [HttpPost]
         public string Valor2()
         {
-            return "Sou o teste de versão V1.2";
+            return "Sou POST o teste de versão V1";
         }
     }
 }

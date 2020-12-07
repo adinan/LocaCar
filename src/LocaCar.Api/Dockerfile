@@ -7,10 +7,12 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["src/LocaCar.Api/LocaCar.Api.csproj", "src/LocaCar.Api/"]
-RUN dotnet restore "src/LocaCar.Api/LocaCar.Api.csproj"
+COPY ["./LocaCar.Api/LocaCar.Api.csproj", "LocaCar.Api/LocaCar.Api.csproj"]
+COPY ["./LocaCar.Business/LocaCar.Business.csproj", "LocaCar.Api/LocaCar.Business.csproj"]
+COPY ["./LocaCar.Data/LocaCar.Data.csproj", "LocaCar.Api/LocaCar.Data.csproj"]
+RUN dotnet restore "LocaCar.Api/LocaCar.Api.csproj"
 COPY . .
-WORKDIR "/src/src/LocaCar.Api"
+WORKDIR "LocaCar.Api"
 RUN dotnet build "LocaCar.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish

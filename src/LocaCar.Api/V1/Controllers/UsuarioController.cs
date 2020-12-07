@@ -107,7 +107,7 @@ namespace LocaCar.Api.V1.Controllers
 
             var response = new LoginResponseViewModel
             {
-                //Nome = ""
+                Nome = user.Nome,
                 AccessToken = encodedToken,
                 ExpiresIn = TimeSpan.FromHours(_appSettings.ExpiracaoHoras).TotalSeconds,
                 Id = user.Id,

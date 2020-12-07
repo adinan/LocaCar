@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+    locacar-api:
+        image: locacar-api:lastest
+        container_name: locacar-api
+        build:
+            context: ../src
+            dockerfile: ./LocaCar.Api/Dockerfile
+        ports:
+            - "5001:5001"
+        environment:
+            -    ASPNETCORE_ENVIRONMENT=Production
+            - ASPNETCORE_URLS=http://*:5001
